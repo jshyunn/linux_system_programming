@@ -11,9 +11,10 @@ int main(void) {
 	
 	mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH; //664
 
-	fd = open("hello.txt", O_CREAT, mode);
+	fd = open("hello.txt", O_CREAT | O_EXCL, mode);
 	if (fd == -1) {
-		perror("Creat"); exit(1);
+		perror("EXCL"); 
+		exit(1);
 	}
 	close(fd);
 
